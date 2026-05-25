@@ -18,7 +18,7 @@
   :root {
     --bg: #FFFFFF;
     --surface: #F5F5F0;
-    --surface2: #EBEBÐ6;
+    --surface2: #EBEBÃÂ6;
     --border: #E8E8E4;
     --text: #1A1A1A;
     --text2: #6B6B6B;
@@ -460,7 +460,7 @@
 
   .form-select-wrap { position: relative; }
   .form-select-wrap::after {
-    content: 'â¾';
+    content: 'Ã¢ÂÂ¾';
     position: absolute;
     right: 12px;
     top: 50%;
@@ -605,6 +605,8 @@
 
   /* ============================================================
      SETTINGS SCREEN
+  ";==========================
+     SETTINGS SCREEN
   ============================================================ */
   .settings-section {
     padding: 20px 16px 0;
@@ -659,30 +661,176 @@
   .toggle.on::after { transform: translateX(18px); }
 
   /* ============================================================
-     SCHEDULE SCREEN (Phase 2 stub)
+     SCHEDULE SCREEN
   ============================================================ */
-  .coming-soon {
+  .cal-toggle {
+    display: flex;
+    margin: 12px 16px 0;
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 3px;
+  }
+  .cal-toggle-btn {
+    flex: 1;
+    padding: 7px;
+    border: none;
+    background: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cal-toggle-btn.active {
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .week-nav, .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+  }
+  .cal-nav-btn {
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text2);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .week-label { font-size: 14px; font-weight: 600; }
+  .month-label { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    padding: 0 12px 6px;
+  }
+  .week-day-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 60px 24px;
-    text-align: center;
-    color: var(--text2);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    padding: 4px 2px;
+    border-radius: 8px;
+    transition: background 0.1s;
   }
-
-  .coming-soon h3 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-  .coming-soon p { font-size: 14px; line-height: 1.5; }
-  .coming-soon .phase-badge {
-    display: inline-block;
-    margin-bottom: 16px;
-    padding: 4px 10px;
-    background: var(--surface);
-    border-radius: 20px;
-    font-size: 11px;
+  .week-day-col:active { background: var(--surface); }
+  .week-day-label {
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 3px;
+  }
+  .week-day-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .week-day-num.is-today { background: var(--text); color: var(--bg); font-weight: 700; }
+  .week-day-num.is-selected { background: var(--surface); border: 1.5px solid var(--border); }
+  .week-day-dots { display: flex; gap: 2px; justify-content: center; min-height: 6px; }
+  .cal-dot { width: 5px; height: 5px; border-radius: 50%; }
+  .day-tasks-header {
+    padding: 10px 16px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .cal-add-btn {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--surface);
+    border: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .month-dow-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 12px;
+    margin-bottom: 2px;
+  }
+  .month-dow {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 4px 0;
+  }
+  .month-week-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 12px;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .month-day-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.1s;
+    min-height: 38px;
+  }
+  .month-day-cell:active { background: var(--surface); }
+  .month-day-cell.is-selected { background: var(--surface); }
+  .month-day-cell.other-month { opacity: 0.2; pointer-events: none; }
+  .month-day-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .month-day-cell.is-today .month-day-num { background: var(--text); color: var(--bg); font-weight: 700; }
+  .month-day-dots { display: flex; gap: 2px; margin-top: 2px; justify-content: center; }
+  .month-dot { width: 4px; height: 4px; border-radius: 50%; }
+  .month-day-selected-bar {
+    margin: 8px 12px 0;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   /* ============================================================
@@ -905,13 +1053,52 @@
       <div class="screen-header">
         <div>
           <div class="screen-title">Schedule</div>
-          <div class="screen-subtitle">Week &amp; month views</div>
+          <div class="screen-subtitle" id="sched-subtitle">Week view</div>
         </div>
       </div>
-      <div class="coming-soon">
-        <div class="phase-badge">Phase 2</div>
-        <h3>Calendar views coming next</h3>
-        <p>Week and month calendar views will be built in Phase 2 once you confirm Phase 1 is working on your device.</p>
+
+      <!-- Week / Month toggle -->
+      <div class="cal-toggle">
+        <button class="cal-toggle-btn active" id="cal-week-btn" onclick="switchCalView('week')">Week</button>
+        <button class="cal-toggle-btn" id="cal-month-btn" onclick="switchCalView('month')">Month</button>
+      </div>
+
+      <!-- WEEK VIEW -->
+      <div id="cal-week-view">
+        <div class="week-nav">
+          <button class="cal-nav-btn" onclick="weekNav(-1)">&#8249;</button>
+          <span class="week-label" id="week-label"></span>
+          <button class="cal-nav-btn" onclick="weekNav(1)">&#8250;</button>
+        </div>
+        <div class="week-days" id="week-days"></div>
+        <div class="day-tasks-header">
+          <span id="day-tasks-label">Tasks</span>
+          <button class="cal-add-btn" onclick="addTaskForDate()">+ Add</button>
+        </div>
+        <div class="task-list" id="day-task-list" style="padding-top:8px"></div>
+        <div style="height:16px"></div>
+      </div>
+
+      <!-- MONTH VIEW -->
+      <div id="cal-month-view" style="display:none">
+        <div class="month-nav">
+          <button class="cal-nav-btn" onclick="monthNav(-1)">&#8249;</button>
+          <span class="month-label" id="month-label"></span>
+          <button class="cal-nav-btn" onclick="monthNav(1)">&#8250;</button>
+        </div>
+        <div class="month-dow-row">
+          <div class="month-dow">M</div><div class="month-dow">T</div>
+          <div class="month-dow">W</div><div class="month-dow">T</div>
+          <div class="month-dow">F</div><div class="month-dow">S</div>
+          <div class="month-dow">S</div>
+        </div>
+        <div id="month-grid"></div>
+        <div class="month-day-selected-bar" id="month-selected-bar" style="display:none">
+          <span id="month-selected-label"></span>
+          <button class="cal-add-btn" onclick="addTaskForDate()">+ Add</button>
+        </div>
+        <div class="task-list" id="month-day-task-list" style="padding-top:8px"></div>
+        <div style="height:16px"></div>
       </div>
     </div>
 
@@ -927,9 +1114,16 @@
       <div class="nlp-input-wrap">
         <input type="text" class="nlp-input" id="nlp-input"
           placeholder='e.g. "VAT return Hitech end of June"'>
-        <button class="nlp-submit" id="nlp-submit">âµ</button>
+        <button class="nlp-submit" id="nlp-submit">Ã¢ÂÂµ</button>
       </div>
-      <div class="nlp-hint">Type naturally â entity, task name, and due date. App will confirm before saving.</div>
+      <div class="nlp-hint">Type naturally &#8212; entity, task name, and due date. App will confirm before saving.</div>
+
+      <div style="padding:0 16px 12px;">
+        <button onclick="openEmailPull()"
+          style="width:100%;padding:11px;border-radius:10px;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;color:var(--text2);-webkit-tap-highlight-color:transparent;">
+          &#128231; Pull tasks from email
+        </button>
+      </div>
 
       <div class="divider">or fill manually</div>
 
@@ -937,17 +1131,7 @@
         <label class="form-label">Entity</label>
         <div class="form-select-wrap">
           <select class="form-select" id="add-entity">
-            <option value="">Select entityâ¦</option>
-            <option>Hitech Metal Industries</option>
-            <option>Nile Derivatives Limited</option>
-            <option>Muzuri International Limited</option>
-            <option>Farm</option>
-            <option>Spinover</option>
-            <option>Pivotal Resources</option>
-            <option>Jungle Development</option>
-            <option>Veltro Power Limited</option>
-            <option>Venture Research / Consulting</option>
-            <option>Personal</option>
+            <option value="">Select entity&#8230;</option>
           </select>
         </div>
       </div>
@@ -981,12 +1165,12 @@
 
       <div class="form-group">
         <label class="form-label">Owner</label>
-        <input type="text" class="form-input" id="add-owner" placeholder="You, Accountant, Delegatedâ¦">
+        <input type="text" class="form-input" id="add-owner" placeholder="You, Accountant, DelegatedÃ¢ÂÂ¦">
       </div>
 
       <div class="form-group">
         <label class="form-label">Notes</label>
-        <textarea class="form-textarea" id="add-notes" placeholder="Optional contextâ¦"></textarea>
+        <textarea class="form-textarea" id="add-notes" placeholder="Optional contextÃ¢ÂÂ¦"></textarea>
       </div>
 
       <button class="btn-primary" id="add-save-btn">Save Task</button>
@@ -1017,15 +1201,15 @@
         <div class="settings-section-title">Goal</div>
         <div class="settings-row" id="set-goal-row">
           <span class="settings-row-label">Financial independence target</span>
-          <span class="settings-row-value" id="set-goal-display">2029 âº</span>
+          <span class="settings-row-value" id="set-goal-display">2029 Ã¢ÂÂº</span>
         </div>
         <div class="settings-row" id="set-income-row">
           <span class="settings-row-label">Monthly passive income target</span>
-          <span class="settings-row-value" id="set-income-display">$5,000 âº</span>
+          <span class="settings-row-value" id="set-income-display">$5,000 Ã¢ÂÂº</span>
         </div>
         <div class="settings-row" id="set-current-row">
           <span class="settings-row-label">Current monthly passive income</span>
-          <span class="settings-row-value" id="set-current-display">$0 âº</span>
+          <span class="settings-row-value" id="set-current-display">$0 Ã¢ÂÂº</span>
         </div>
       </div>
 
@@ -1037,12 +1221,15 @@
         </div>
         <div class="settings-row" id="set-digest-row">
           <span class="settings-row-label">Sunday digest</span>
-          <span class="settings-row-value" id="set-digest-display">8:00 AM âº</span>
+          <span class="settings-row-value" id="set-digest-display">8:00 AM Ã¢ÂÂº</span>
         </div>
       </div>
 
       <div class="settings-section">
-        <div class="settings-section-title">Entities</div>
+        <div class="settings-section-title" style="display:flex;align-items:center;justify-content:space-between;">
+          Entities
+          <button class="cal-add-btn" onclick="openAddEntity()" style="text-transform:none;font-size:12px;">+ Add Entity</button>
+        </div>
         <div id="entity-toggles"></div>
       </div>
 
@@ -1050,7 +1237,7 @@
         <div class="settings-section-title">Data</div>
         <div class="settings-row" onclick="exportCSV()">
           <span class="settings-row-label">Export all tasks to CSV</span>
-          <span class="settings-row-value">â</span>
+          <span class="settings-row-value">Ã¢ÂÂ</span>
         </div>
         <div class="settings-row" onclick="clearCache()">
           <span class="settings-row-label">Clear local cache</span>
@@ -1059,7 +1246,7 @@
       </div>
 
       <div style="padding:20px 16px;font-size:12px;color:var(--text3);text-align:center;">
-        Command Â· Phase 1 Â· Built May 2026<br>EAT (UTC+3) Â· Kampala, Uganda
+        Command ÃÂ· Phase 1 ÃÂ· Built May 2026<br>EAT (UTC+3) ÃÂ· Kampala, Uganda
       </div>
 
       <div style="height:16px"></div>
@@ -1117,7 +1304,7 @@
     <div class="sheet-drag"></div>
     <div class="sheet-header">
       <span class="sheet-title" id="modal-title">Edit Task</span>
-      <button class="sheet-close" onclick="closeModalDirect()">â</button>
+      <button class="sheet-close" onclick="closeModalDirect()">Ã¢ÂÂ</button>
     </div>
     <div id="modal-body"></div>
   </div>
@@ -1254,7 +1441,7 @@ function updateMotivatorBar() {
   const curr = settings.currentMonthlyIncome || 0;
   const tgt = settings.targetMonthlyIncome || 5000;
   document.getElementById('mot-target').textContent =
-    `${sym}${curr.toLocaleString()} / ${sym}${tgt.toLocaleString()} Â· Age 35 by ${goalYear}`;
+    `${sym}${curr.toLocaleString()} / ${sym}${tgt.toLocaleString()} ÃÂ· Age 35 by ${goalYear}`;
 }
 
 // ============================================================
@@ -1277,7 +1464,7 @@ function renderTaskCard(t) {
   else if (st === 'delegated' || t.status === 'delegated') cardClass = 'delegated';
   if (t.status === 'completed') cardClass += ' completed';
 
-  const ownerText = t.owner && t.owner !== 'You' ? `Â· ${t.owner}` : '';
+  const ownerText = t.owner && t.owner !== 'You' ? `ÃÂ· ${t.owner}` : '';
 
   return `
     <div class="task-card ${cardClass}" id="card-${t.id}">
@@ -1327,6 +1514,20 @@ function renderToday() {
   const in30 = new Date(t0); in30.setDate(t0.getDate() + 30);
 
   // Filter by active entity
+  // Rebuild filter chips if custom entities exist
+  const allEntsNow = getAllEntities();
+  const filterBar = document.getElementById('today-filters');
+  const existingFilters = new Set([...filterBar.querySelectorAll('.filter-chip')].map(c => c.dataset.filter));
+  allEntsNow.forEach(ent => {
+    if (!existingFilters.has(ent.name)) {
+      const chip = document.createElement('button');
+      chip.className = 'filter-chip';
+      chip.dataset.filter = ent.name;
+      chip.textContent = ent.short;
+      filterBar.appendChild(chip);
+    }
+  });
+
   let filtered = tasks.filter(t => {
     if (t.status === 'completed') return false;
     if (activeFilter !== 'all' && t.entity !== activeFilter) return false;
@@ -1369,7 +1570,7 @@ function renderToday() {
   document.getElementById('count-upcoming').textContent = upcoming.length;
   document.getElementById('list-upcoming').innerHTML = upcoming.length
     ? upcoming.map(renderTaskCard).join('')
-    : '<div class="empty-state"><div class="empty-icon">â</div>Nothing upcoming in the next 30 days</div>';
+    : '<div class="empty-state"><div class="empty-icon">Ã¢ÂÂ</div>Nothing upcoming in the next 30 days</div>';
 
   // Summary
   const total = overdue.length + dueWeek.length;
@@ -1384,7 +1585,7 @@ function renderToday() {
   const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   document.getElementById('today-date').textContent =
     `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
-  document.getElementById('today-day').textContent = `${now.getFullYear()} Â· Kampala`;
+  document.getElementById('today-day').textContent = `${now.getFullYear()} ÃÂ· Kampala`;
 }
 
 // ============================================================
@@ -1394,7 +1595,7 @@ function renderEntities() {
   const grid = document.getElementById('entity-grid');
   const t0 = today();
 
-  grid.innerHTML = ENTITIES.map(ent => {
+  grid.innerHTML = getAllEntities().map(ent => {
     if (settings.activeEntities && !settings.activeEntities.includes(ent.name)) return '';
     const entTasks = tasks.filter(t => t.entity === ent.name && t.status !== 'completed');
     const overdue = entTasks.filter(t => {
@@ -1454,21 +1655,25 @@ function filterByEntity(name) {
 // SETTINGS SCREEN RENDER
 // ============================================================
 function renderSettings() {
-  document.getElementById('set-goal-display').textContent = `${settings.goalYear} âº`;
+  document.getElementById('set-goal-display').textContent = `${settings.goalYear} Ã¢ÂÂº`;
   document.getElementById('set-income-display').textContent =
-    `${settings.currency === 'UGX' ? 'UGX' : '$'}${(settings.targetMonthlyIncome||0).toLocaleString()} âº`;
+    `${settings.currency === 'UGX' ? 'UGX' : '$'}${(settings.targetMonthlyIncome||0).toLocaleString()} Ã¢ÂÂº`;
   document.getElementById('set-current-display').textContent =
-    `${settings.currency === 'UGX' ? 'UGX' : '$'}${(settings.currentMonthlyIncome||0).toLocaleString()} âº`;
-  document.getElementById('set-digest-display').textContent = `${settings.digestTime || '08:00'} âº`;
+    `${settings.currency === 'UGX' ? 'UGX' : '$'}${(settings.currentMonthlyIncome||0).toLocaleString()} Ã¢ÂÂº`;
+  document.getElementById('set-digest-display').textContent = `${settings.digestTime || '08:00'} Ã¢ÂÂº`;
 
   const notifToggle = document.getElementById('toggle-notif');
   notifToggle.classList.toggle('on', !!settings.notificationsEnabled);
 
   // Entity toggles
   const cont = document.getElementById('entity-toggles');
-  cont.innerHTML = ENTITIES.map(ent => `
+  cont.innerHTML = getAllEntities().map(ent => `
     <div class="settings-row">
-      <span class="settings-row-label">${escHtml(ent.name)}</span>
+      <span class="settings-row-label" style="display:flex;align-items:center;gap:8px;">
+        ${escHtml(ent.name)}
+        ${ent.custom ? `<button onclick="removeCustomEntity('${escHtml(ent.name)}')"
+          style="font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;padding:0;">Remove</button>` : ''}
+      </span>
       <button class="toggle ${(settings.activeEntities||[]).includes(ent.name) ? 'on' : ''}"
         onclick="toggleEntity('${escHtml(ent.name)}', this)"></button>
     </div>`
@@ -1491,7 +1696,7 @@ function toggleSetting(key, btn) {
 }
 
 function toggleEntity(name, btn) {
-  const arr = settings.activeEntities || ENTITIES.map(e => e.name);
+  const arr = settings.activeEntities || getAllEntities().map(e => e.name);
   const idx = arr.indexOf(name);
   if (idx >= 0) arr.splice(idx, 1);
   else arr.push(name);
@@ -1559,7 +1764,7 @@ function completeTask(id) {
     t._prevStatus = t.status;
     t.status = 'completed';
     t.lastCompleted = formatDate(today());
-    showToast('â Done â ' + t.taskName);
+    showToast('Ã¢ÂÂ Done Ã¢ÂÂ ' + t.taskName);
 
     // Auto-advance recurring task's next due date
     setTimeout(() => {
@@ -1599,7 +1804,7 @@ function openSnooze(id) {
   if (!t) return;
   openModal('Snooze: ' + t.taskName, `
     <div style="padding:12px 16px 8px;font-size:13px;color:var(--text2);">
-      Currently due: <strong>${friendlyDate(t.nextDue) || 'â'}</strong>
+      Currently due: <strong>${friendlyDate(t.nextDue) || 'Ã¢ÂÂ'}</strong>
     </div>
     <div class="snooze-options">
       <button class="snooze-btn" onclick="doSnooze('${id}', 3)">+3 days</button>
@@ -1720,6 +1925,15 @@ function initAddScreen() {
   const d = document.getElementById('add-due');
   if (d && !d.value) d.value = formatDate(today());
 
+  // Populate entity selects dynamically
+  const entSel = document.getElementById('add-entity');
+  if (entSel) {
+    const cur = entSel.value;
+    entSel.innerHTML = '<option value="">Select entityâ¦</option>' +
+      getAllEntities().map(e => `<option value="${e.name}">${e.name}</option>`).join('');
+    if (cur) entSel.value = cur;
+  }
+
   document.getElementById('add-save-btn').onclick = saveNewTask;
   document.getElementById('nlp-submit').onclick = parseNLP;
   document.getElementById('nlp-input').onkeydown = e => { if (e.key === 'Enter') parseNLP(); };
@@ -1779,7 +1993,7 @@ function parseNLP() {
       <label class="form-label">Entity</label>
       <div class="form-select-wrap">
         <select class="form-select" id="nlp-entity">
-          ${ENTITIES.map(e => `<option value="${e.name}" ${e.name===detectedEntity?'selected':''}>${e.name}</option>`).join('')}
+          ${getAllEntities().map(e => `<option value="${e.name}" ${e.name===detectedEntity?'selected':''}>${e.name}</option>`).join('')}
         </select>
       </div>
     </div>
@@ -1897,6 +2111,7 @@ function switchTab(tab, btn) {
   if (btn) btn.classList.add('active');
 
   if (tab === 'today') renderToday();
+  if (tab === 'schedule') renderSchedule();
   if (tab === 'entities') renderEntities();
   if (tab === 'settings') renderSettings();
   if (tab === 'add') initAddScreen();
@@ -1913,6 +2128,202 @@ document.getElementById('today-filters').addEventListener('click', e => {
   activeFilter = chip.dataset.filter;
   renderToday();
 });
+
+
+// ============================================================
+// ENTITY MANAGEMENT
+// ============================================================
+function getAllEntities() {
+  return [...ENTITIES, ...(settings.customEntities || [])];
+}
+
+function populateEntitySelects() {
+  const all = getAllEntities();
+  const opts = '<option value="">Select entityâ¦</option>' +
+    all.map(e => `<option value="${e.name}">${e.name}</option>`).join('');
+  document.querySelectorAll('select#add-entity, select#nlp-entity').forEach(sel => {
+    const cur = sel.value;
+    sel.innerHTML = opts;
+    if (cur) sel.value = cur;
+  });
+}
+
+function openAddEntity() {
+  openModal('Add Entity', `
+    <div class="form-group">
+      <label class="form-label">Entity Name</label>
+      <input type="text" class="form-input" id="new-ent-name" placeholder="e.g. Padel Club Ltd">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Short Name</label>
+      <input type="text" class="form-input" id="new-ent-short" placeholder="e.g. Padel">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <input type="text" class="form-input" id="new-ent-cat" placeholder="e.g. Sports, Real Estate, Financeâ¦">
+    </div>
+    <button class="btn-primary" onclick="saveNewEntity()">Add Entity</button>
+    <div style="height:10px"></div>
+  `);
+}
+
+function saveNewEntity() {
+  const name = document.getElementById('new-ent-name').value.trim();
+  const short = document.getElementById('new-ent-short').value.trim() || name;
+  const cat = document.getElementById('new-ent-cat').value.trim() || 'Custom';
+  if (!name) { showToast('Please enter a name'); return; }
+  if (getAllEntities().find(e => e.name === name)) { showToast('Entity already exists'); return; }
+  if (!settings.customEntities) settings.customEntities = [];
+  settings.customEntities.push({ name, short, category: cat, custom: true });
+  if (!settings.activeEntities) settings.activeEntities = ENTITIES.map(e => e.name);
+  settings.activeEntities.push(name);
+  saveSettings(settings);
+  closeModalDirect();
+  renderSettings();
+  renderEntities();
+  showToast('Entity added');
+}
+
+function removeCustomEntity(name) {
+  if (!confirm(`Remove "${name}"? It won't appear in lists, but existing tasks are kept.`)) return;
+  settings.customEntities = (settings.customEntities || []).filter(e => e.name !== name);
+  settings.activeEntities = (settings.activeEntities || []).filter(n => n !== name);
+  saveSettings(settings);
+  renderSettings();
+  renderEntities();
+  showToast('Entity removed');
+}
+
+// ============================================================
+// EMAIL TASK PULL
+// ============================================================
+function openEmailPull() {
+  openModal('Pull Tasks from Email', `
+    <div style="padding:10px 16px 4px;font-size:13px;color:var(--text2);">
+      Paste the body of an email. The app will scan it for action items.
+    </div>
+    <div class="form-group">
+      <textarea class="form-textarea" id="email-body" style="min-height:140px"
+        placeholder="Paste email content hereâ¦"></textarea>
+    </div>
+    <button class="btn-primary" onclick="parseEmailTasks()">Scan for Tasks</button>
+    <div style="height:10px"></div>
+  `);
+}
+
+function parseEmailTasks() {
+  const body = (document.getElementById('email-body').value || '').trim();
+  if (!body) { showToast('Please paste email content'); return; }
+
+  const lbody = body.toLowerCase();
+
+  // Detect entity
+  let detectedEntity = 'Personal';
+  const entityKwMap = {};
+  getAllEntities().forEach(e => {
+    entityKwMap[e.name.toLowerCase()] = e.name;
+    entityKwMap[e.short.toLowerCase()] = e.name;
+    const fw = e.name.split(' ')[0].toLowerCase();
+    if (fw.length > 3) entityKwMap[fw] = e.name;
+  });
+  Object.assign(entityKwMap, {
+    'hitech':'Hitech Metal Industries','metal':'Hitech Metal Industries',
+    'nile':'Nile Derivatives Limited','derivatives':'Nile Derivatives Limited',
+    'muzuri':'Muzuri International Limited',
+    'farm':'Farm','spinover':'Spinover','padel':'Spinover',
+    'pivotal':'Pivotal Resources','jungle':'Jungle Development',
+    'veltro':'Veltro Power Limited','consulting':'Venture Research / Consulting'
+  });
+  for (const [kw, val] of Object.entries(entityKwMap)) {
+    if (lbody.includes(kw)) { detectedEntity = val; break; }
+  }
+
+  // Detect date
+  let detectedDate = '';
+  const monthMap = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+  const mm = lbody.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(\d{1,2})?\b/);
+  if (mm) {
+    const m = monthMap[mm[1]]; const day = mm[2] ? parseInt(mm[2]) : 1;
+    detectedDate = `${new Date().getFullYear()}-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  } else if (lbody.includes('end of month') || lbody.includes('eom')) {
+    const d = new Date(); d.setMonth(d.getMonth()+1,0); detectedDate = formatDate(d);
+  } else if (lbody.includes('next week')) {
+    const d = today(); d.setDate(d.getDate()+7); detectedDate = formatDate(d);
+  } else if (lbody.includes('tomorrow')) {
+    const d = today(); d.setDate(d.getDate()+1); detectedDate = formatDate(d);
+  } else if (lbody.includes('today')) {
+    detectedDate = formatDate(today());
+  }
+
+  // Find action lines
+  const actionVerbs = ['send','call','follow up','review','submit','prepare','complete',
+    'confirm','arrange','check','update','pay','sign','schedule','book','contact',
+    'deliver','collect','reply','respond','approve','finalize','discuss','meet',
+    'report','invoice','quote','order','please','action','need','must','asap',
+    'urgent','remind','ensure','verify'];
+  const sentences = body.split(/[.\n!?]+/).map(s => s.trim()).filter(s => s.length > 8 && s.length < 200);
+  const actionLines = sentences.filter(s => {
+    const sl = s.toLowerCase();
+    return actionVerbs.some(v => sl.includes(v));
+  }).slice(0, 6);
+
+  if (actionLines.length === 0) {
+    showToast('No clear action items found \u2014 try a different email');
+    return;
+  }
+
+  const entOpts = getAllEntities().map(e =>
+    `<option value="${e.name}" ${e.name === detectedEntity ? 'selected' : ''}>${e.name}</option>`
+  ).join('');
+
+  const itemsHtml = actionLines.map((line, i) => `
+    <div style="margin-bottom:8px;padding:10px;background:var(--surface);border-radius:8px;">
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;">
+        <input type="checkbox" id="ei-chk-${i}" checked style="margin-top:4px;flex-shrink:0;width:16px;height:16px;">
+        <input type="text" class="form-input" id="ei-name-${i}" value="${escHtml(line.slice(0,100))}"
+          style="flex:1;font-size:13px;padding:7px 10px;">
+      </div>
+      <div style="display:flex;gap:6px;padding-left:24px;">
+        <input type="date" class="form-input" id="ei-due-${i}" value="${detectedDate}"
+          style="flex:1;font-size:12px;padding:6px 8px;">
+        <div class="form-select-wrap" style="flex:1.2;">
+          <select class="form-select" id="ei-ent-${i}" style="font-size:12px;padding:6px 8px;">${entOpts}</select>
+        </div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('modal-title').textContent = 'Confirm Tasks';
+  document.getElementById('modal-body').innerHTML = `
+    <div style="padding:8px 16px 4px;font-size:12px;color:var(--text2);">
+      Found ${actionLines.length} action item${actionLines.length>1?'s':''}. Check what to save:
+    </div>
+    ${itemsHtml}
+    <button class="btn-primary" onclick="saveEmailTasks(${actionLines.length})">Save Checked</button>
+    <div style="height:10px"></div>
+  `;
+}
+
+function saveEmailTasks(count) {
+  let saved = 0;
+  for (let i = 0; i < count; i++) {
+    const chk = document.getElementById(`ei-chk-${i}`);
+    if (!chk || !chk.checked) continue;
+    const name = (document.getElementById(`ei-name-${i}`).value || '').trim();
+    if (!name) continue;
+    tasks.push({
+      id: 'E' + Date.now() + '_' + i,
+      entity: document.getElementById(`ei-ent-${i}`).value || 'Personal',
+      taskName: name, frequency: 'One-time', owner: 'You',
+      nextDue: document.getElementById(`ei-due-${i}`).value,
+      lastCompleted: null, status: 'pending', notes: 'From email', category: 'custom'
+    });
+    saved++;
+  }
+  saveTasks(tasks);
+  closeModalDirect();
+  renderToday(); renderEntities();
+  showToast(`${saved} task${saved !== 1 ? 's' : ''} saved`);
+}
 
 // ============================================================
 // UTILS
@@ -1953,6 +2364,174 @@ function clearCache() {
   if (!confirm('This will reset all task data to defaults. Continue?')) return;
   localStorage.removeItem(STORAGE_KEY);
   location.reload();
+}
+
+// ============================================================
+// SCHEDULE / CALENDAR
+// ============================================================
+let calView = 'week';
+let weekOffset = 0;
+let monthOffset = 0;
+let selectedDate = formatDate(today());
+
+function switchCalView(view) {
+  calView = view;
+  document.getElementById('cal-week-btn').classList.toggle('active', view === 'week');
+  document.getElementById('cal-month-btn').classList.toggle('active', view === 'month');
+  document.getElementById('cal-week-view').style.display = view === 'week' ? '' : 'none';
+  document.getElementById('cal-month-view').style.display = view === 'month' ? '' : 'none';
+  document.getElementById('sched-subtitle').textContent = view === 'week' ? 'Week view' : 'Month view';
+  if (view === 'week') renderWeekView();
+  else renderMonthView();
+}
+
+function renderSchedule() {
+  if (calView === 'week') renderWeekView();
+  else renderMonthView();
+}
+
+function getWeekStart(offset) {
+  const t = today();
+  const dow = t.getDay();
+  const mon = new Date(t);
+  mon.setDate(t.getDate() - (dow === 0 ? 6 : dow - 1) + offset * 7);
+  return mon;
+}
+
+function weekNav(dir) { weekOffset += dir; renderWeekView(); }
+
+function renderWeekView() {
+  const ws = getWeekStart(weekOffset);
+  const we = new Date(ws); we.setDate(ws.getDate() + 6);
+  const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const sl = `${mo[ws.getMonth()]} ${ws.getDate()}`;
+  const el = ws.getMonth() === we.getMonth()
+    ? `${we.getDate()}` : `${mo[we.getMonth()]} ${we.getDate()}`;
+  document.getElementById('week-label').textContent = `${sl} â ${el}`;
+
+  const todayStr = formatDate(today());
+  const dayLabels = ['M','T','W','T','F','S','S'];
+  let html = '';
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(ws); d.setDate(ws.getDate() + i);
+    const ds = formatDate(d);
+    const isTd = ds === todayStr;
+    const isSel = ds === selectedDate && !isTd;
+    const dt = getTasksForDate(ds);
+    const dots = dt.slice(0,3).map(t => `<div class="cal-dot" style="background:${taskDotColor(t)}"></div>`).join('');
+    html += `<div class="week-day-col" onclick="selectDay('${ds}')">
+      <div class="week-day-label">${dayLabels[i]}</div>
+      <div class="week-day-num ${isTd ? 'is-today' : isSel ? 'is-selected' : ''}">${d.getDate()}</div>
+      <div class="week-day-dots">${dots}</div>
+    </div>`;
+  }
+  document.getElementById('week-days').innerHTML = html;
+  renderDayTasks(selectedDate);
+}
+
+function getTasksForDate(ds) {
+  return tasks.filter(t => t.status !== 'completed' && t.nextDue === ds);
+}
+
+function taskDotColor(t) {
+  const st = taskStatus(t);
+  if (st === 'overdue') return 'var(--red)';
+  if (st === 'due-soon') return 'var(--amber)';
+  if (t.status === 'delegated') return 'var(--blue)';
+  return 'var(--green)';
+}
+
+function selectDay(ds) {
+  selectedDate = ds;
+  renderWeekView();
+}
+
+function renderDayTasks(ds) {
+  const dt = getTasksForDate(ds);
+  const d = parseDate(ds);
+  const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dy = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const lbl = d ? `${dy[d.getDay()]} ${mo[d.getMonth()]} ${d.getDate()}` : 'Tasks';
+  document.getElementById('day-tasks-label').textContent = lbl;
+  const el = document.getElementById('day-task-list');
+  el.innerHTML = dt.length
+    ? dt.map(renderTaskCard).join('')
+    : '<div class="empty-state"><div class="empty-icon">&#128197;</div>Nothing due this day</div>';
+}
+
+function monthNav(dir) { monthOffset += dir; renderMonthView(); }
+
+function renderMonthView() {
+  const t0 = today();
+  const base = new Date(t0.getFullYear(), t0.getMonth() + monthOffset, 1);
+  const mos = ['January','February','March','April','May','June','July',
+               'August','September','October','November','December'];
+  document.getElementById('month-label').textContent = `${mos[base.getMonth()]} ${base.getFullYear()}`;
+
+  const todayStr = formatDate(t0);
+  const firstDay = new Date(base.getFullYear(), base.getMonth(), 1);
+  const lastDay = new Date(base.getFullYear(), base.getMonth() + 1, 0);
+  const startDow = firstDay.getDay();
+  const startOffset = startDow === 0 ? 6 : startDow - 1;
+
+  let cells = [];
+  for (let i = 0; i < startOffset; i++) {
+    const dd = new Date(firstDay); dd.setDate(dd.getDate() - (startOffset - i));
+    cells.push({ d: dd, other: true });
+  }
+  for (let i = 1; i <= lastDay.getDate(); i++) {
+    cells.push({ d: new Date(base.getFullYear(), base.getMonth(), i), other: false });
+  }
+  while (cells.length % 7 !== 0) {
+    const prev = cells[cells.length-1].d;
+    const nd = new Date(prev); nd.setDate(prev.getDate()+1);
+    cells.push({ d: nd, other: true });
+  }
+
+  let html = '';
+  for (let w = 0; w < cells.length / 7; w++) {
+    html += '<div class="month-week-row">';
+    for (let d = 0; d < 7; d++) {
+      const cell = cells[w*7+d];
+      const ds = formatDate(cell.d);
+      const isTd = ds === todayStr;
+      const isSel = ds === selectedDate;
+      const dt = cell.other ? [] : getTasksForDate(ds);
+      const dots = dt.slice(0,3).map(t => `<div class="month-dot" style="background:${taskDotColor(t)}"></div>`).join('');
+      html += `<div class="month-day-cell ${isTd?'is-today':''} ${isSel?'is-selected':''} ${cell.other?'other-month':''}"
+               onclick="selectMonthDay('${ds}')">
+        <div class="month-day-num">${cell.d.getDate()}</div>
+        <div class="month-day-dots">${dots}</div>
+      </div>`;
+    }
+    html += '</div>';
+  }
+  document.getElementById('month-grid').innerHTML = html;
+  if (selectedDate) renderMonthDayTasks(selectedDate);
+}
+
+function selectMonthDay(ds) { selectedDate = ds; renderMonthView(); }
+
+function renderMonthDayTasks(ds) {
+  const dt = getTasksForDate(ds);
+  const d = parseDate(ds);
+  const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dy = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const bar = document.getElementById('month-selected-bar');
+  const lbl = document.getElementById('month-selected-label');
+  bar.style.display = '';
+  lbl.textContent = d ? `${dy[d.getDay()]} ${mo[d.getMonth()]} ${d.getDate()}` : ds;
+  document.getElementById('month-day-task-list').innerHTML = dt.length
+    ? dt.map(renderTaskCard).join('')
+    : '<div class="empty-state"><div class="empty-icon">&#128197;</div>Nothing due this day</div>';
+}
+
+function addTaskForDate() {
+  switchTab('add', document.querySelector('[data-tab="add"]'));
+  setTimeout(() => {
+    const inp = document.getElementById('add-due');
+    if (inp && selectedDate) inp.value = selectedDate;
+  }, 50);
 }
 
 // ============================================================
