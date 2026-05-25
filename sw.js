@@ -1,9 +1,8 @@
-const CACHE_NAME = 'command-v1';
+const CACHE_NAME = 'command-v2';
 const ASSETS = [
-  '/index.html',
-  '/manifest.json',
-  '/sheets.js',
-  '/data/tasks.json'
+  '/Command-center/',
+  '/Command-center/index.html',
+  '/Command-center/manifest.json'
 ];
 
 self.addEventListener('install', e => {
@@ -34,17 +33,6 @@ self.addEventListener('fetch', e => {
       const clone = res.clone();
       caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
       return res;
-    }))
-  );
-});
-
-self.addEventListener('push', e => {
-  const data = e.data ? e.data.json() : { title: 'Command', body: 'You have tasks due.' };
-  e.waitUntil(
-    self.registration.showNotification(data.title, {
-      body: data.body,
-      icon: '/icon-192.png',
-      badge: '/icon-192.png'
-    })
+    }).catch(() => caches.match('/Command-center/index.html')))
   );
 });
